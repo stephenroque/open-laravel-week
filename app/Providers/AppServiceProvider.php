@@ -27,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Http::macro('punkapi', function() {
             return Http::acceptJson()
-                ->baseUrl(config('punkapi.url'));
+                ->baseUrl(config('punkapi.url'))
+                ->retry(3,100);
         });
     }
 }
