@@ -33,7 +33,8 @@ require __DIR__.'/auth.php';
 
 
 Route::group([
-    'prefix' => 'beers'
+    'prefix' => 'beers',
+    'middleware' => 'auth'
 ],function() {
     Route::get(uri:'/', action:[BeerController::class, 'index']);
 
