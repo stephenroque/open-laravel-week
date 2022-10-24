@@ -12,13 +12,18 @@ use App\Models\Export;
 use App\Services\PunkapiService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Inertia\Inertia;
 use Maatwebsite\Excel\Facades\Excel;
 
 class BeerController extends Controller
 {
     public function index(BeerRequest $request, PunkapiService $service)
     {
-        return $service->getBeers(...$request->validated());
+        $beers = $service->getBeers(...$request->validated());
+
+        return Inertia::render('Beers', [
+            'beers'=> $beers
+        ]);
     }
 
     public function export(BeerRequest $request, PunkapiService $service)
