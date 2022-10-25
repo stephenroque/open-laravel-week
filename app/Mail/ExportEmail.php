@@ -46,8 +46,8 @@ class ExportEmail extends Mailable
         return new Content(
             view: 'emails.export',
             with: [
-                'filename' => $this->filename,
-            ],
+                'filename' => $this->filename
+            ]
         );
     }
 
@@ -59,7 +59,7 @@ class ExportEmail extends Mailable
     public function attachments()
     {
         return [
-            Attachment::fromStorage($this->filename),
+            Attachment::fromStorage($this->filename)
         ];
     }
 }

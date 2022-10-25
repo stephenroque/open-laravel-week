@@ -16,6 +16,7 @@ class ExportJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+
     /**
      * Create a new job instance.
      *
@@ -24,7 +25,8 @@ class ExportJob implements ShouldQueue
     public function __construct(
         protected array $data,
         protected String $filename,
-        protected PunkapiService $service = new PunkapiService)
+        protected PunkapiService $service = new PunkapiService
+    )
     {
         //
     }
@@ -40,14 +42,14 @@ class ExportJob implements ShouldQueue
 
         $filteredBeers = array_map(function($value) {
             return collect($value)
-            ->only(['name','tagline','first_brewed','description'])
-            ->toArray();
+                ->only(['name','tagline','first_brewed','description'])
+                ->toArray();
         }, $beers);
 
         Excel::store(
-             new BeerExport($filteredBeers),
-             $this->filename,
-             's3'
+            new BeerExport($filteredBeers),
+            $this->filename,
+            's3'
         );
     }
 }

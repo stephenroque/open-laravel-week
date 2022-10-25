@@ -2,7 +2,9 @@
 import { ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { CheckIcon } from '@heroicons/vue/24/outline'
+
 defineProps(['open', 'title', 'description', 'button'])
+
 </script>
 
 <template>
@@ -39,3 +41,4 @@ defineProps(['open', 'title', 'description', 'button'])
         </Dialog>
     </TransitionRoot>
 </template>
+

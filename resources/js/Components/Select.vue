@@ -1,5 +1,6 @@
 <script setup>
 defineProps(['modelValue', 'placeholder', 'options', 'optionValue', 'optionLabel']);
+
 defineEmits(['update:modelValue']);
 </script>
 

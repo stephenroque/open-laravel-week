@@ -1,11 +1,10 @@
 <?php
 
 use App\Http\Controllers\BeerController;
-use App\Http\Controllers\ExportController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use \App\Http\Controllers\ExportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,11 +35,13 @@ require __DIR__.'/auth.php';
 Route::group([
     'prefix' => 'beers',
     'middleware' => 'auth'
-],function() {
-    Route::get(uri:'/', action:[BeerController::class, 'index']);
+], function() {
+    Route::get('/', [BeerController::class, 'index'])->name('beers');
 
-    Route::get(uri:'/export', action:[BeerController::class, 'export']);
+    Route::post('/export', [BeerController::class, 'export'])->name('beers.export');
 
-    Route::resource("reports",ExportController::class)
-        ->only(["index","destroy"]);
+    Route::resource("reports", ExportController::class)
+        ->only(["index", "show", "destroy"]);
 });
+
+

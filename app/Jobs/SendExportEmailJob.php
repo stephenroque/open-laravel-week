@@ -32,7 +32,7 @@ class SendExportEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to("teste@teste.com.br")
-        ->send(new ExportEmail($this->filename));
+        Mail::to("lucas@teste.com")
+            ->send(new ExportEmail($this->filename));
     }
 }

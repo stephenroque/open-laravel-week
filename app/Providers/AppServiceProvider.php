@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Services\PunkapiService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\ServiceProvider;
 
